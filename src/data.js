@@ -1,11 +1,5 @@
 import HeroImage from "/assets/hero-img.webp";
 
-const Image = {
-  HeroImage,
-};
-
-export default Image;
-
 import Tools1 from "/assets/tools/vscode.png";
 import Tools2 from "/assets/tools/reactjs.png";
 import Tools3 from "/assets/tools/nextjs.png";
@@ -17,6 +11,21 @@ import Tools8 from "/assets/tools/github.png";
 import Tools9 from "/assets/tools/ai.png";
 import Tools10 from "/assets/tools/canva.png";
 import Tools11 from "/assets/tools/figma.png";
+
+import Proyek1 from "/assets/proyek/proyek1.webp";
+import Proyek2 from "/assets/proyek/proyek2.webp";
+import Proyek3 from "/assets/proyek/proyek3.webp";
+import Proyek4 from "/assets/proyek/proyek4.webp";
+import Proyek5 from "/assets/proyek/proyek5.webp";
+import Proyek6 from "/assets/proyek/proyek6.webp";
+
+const Image = {
+  HeroImage,
+};
+
+export default Image;
+
+
 
 export const listTools = [
   {
@@ -97,13 +106,6 @@ export const listTools = [
     dad: "1100",
   },
 ];
-
-import Proyek1 from "/assets/proyek/proyek1.webp";
-import Proyek2 from "/assets/proyek/proyek2.webp";
-import Proyek3 from "/assets/proyek/proyek3.webp";
-import Proyek4 from "/assets/proyek/proyek4.webp";
-import Proyek5 from "/assets/proyek/proyek5.webp";
-import Proyek6 from "/assets/proyek/proyek6.webp";
 
 export const listProyek = [
   {
