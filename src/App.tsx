@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import FooterHud from '@/components/layout/FooterHud'
+import ScreenNav from '@/components/layout/ScreenNav'
 import TopBar from '@/components/layout/TopBar'
 import AboutScreen from '@/components/screens/AboutScreen'
 import ContactScreen from '@/components/screens/ContactScreen'
@@ -95,7 +96,11 @@ export default function App() {
 
   return (
     <div className="relative flex h-dvh max-h-dvh w-full flex-col overflow-hidden bg-deep-600 font-sans">
-      <TopBar />
+      <TopBar
+        nav={
+          screen === 'home' ? undefined : <ScreenNav current={screen} onSelect={go} variant="top" />
+        }
+      />
 
       {/* `key` remounts the stage so every screen replays its entrance. */}
       <div key={screen} className="relative flex min-h-0 flex-1 flex-col">
@@ -108,7 +113,17 @@ export default function App() {
         {screen === 'contact' && <ContactScreen onBack={() => go('home')} />}
       </div>
 
-      <FooterHud status={status} />
+      {screen === 'home' ? (
+        <FooterHud status={status} />
+      ) : (
+        <>
+          {/* Phone/tablet: the tab bar takes the footer's place. */}
+          <ScreenNav current={screen} onSelect={go} variant="bottom" />
+          <div className="hidden lg:block">
+            <FooterHud status={status} />
+          </div>
+        </>
+      )}
     </div>
   )
 }
