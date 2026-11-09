@@ -3,6 +3,8 @@ import { useState } from 'react'
 interface CharacterArtProps {
   /** Swap in your own artwork — a transparent PNG around 900×1400 works best. */
   src?: string
+  /** Real photo revealed while the pointer is over the art. Portrait (4:5) JPEG. */
+  photoSrc?: string
   /** Corner brackets + floating chips belong to the home screen only. */
   showFrame?: boolean
   chips?: { label: string; tone: 'ink' | 'bone' }[]
@@ -17,14 +19,18 @@ interface CharacterArtProps {
  */
 export default function CharacterArt({
   src = '/character.png',
+  photoSrc = '/photo.jpg',
   showFrame = true,
   chips = [],
   className = '',
 }: CharacterArtProps) {
   const [failed, setFailed] = useState(false)
+  const [photoFailed, setPhotoFailed] = useState(false)
+  /** Only swap when both images actually exist. */
+  const swap = !failed && !photoFailed
 
   return (
-    <div className={`relative h-full w-full select-none ${className}`}>
+    <div className={`group/art relative h-full w-full select-none ${className}`}>
       {showFrame && (
         <div className="pointer-events-none absolute inset-6 z-20">
           <span className="absolute -left-1 -top-1 h-10 w-10 border-l-[6px] border-t-[6px] border-ink" />
@@ -39,7 +45,11 @@ export default function CharacterArt({
            simply taller than the box it sits in, so the legs run past the bottom and
            the wrapper clips them. `-top-[8%]` trims the PNG's empty top margin; it is
            `top`, not `translate-y`, because `animate-sway` owns the transform. */
-        <div className="absolute inset-0 z-10 flex items-start justify-center overflow-hidden">
+        <div
+          className={`absolute inset-0 z-10 flex items-start justify-center overflow-hidden transition-opacity duration-500 ${
+            swap ? 'group-hover/art:opacity-0' : ''
+          }`}
+        >
           <img
             src={src}
             alt=""
@@ -49,6 +59,41 @@ export default function CharacterArt({
         </div>
       ) : (
         <ArtPlaceholder src={src} />
+      )}
+
+      {/* Hover reveal: the anime art fades out and the real photo drops in as a
+          tilted, white-bordered print. `loading="lazy"` keeps phones (where this
+          column is display:none) from downloading it at all. */}
+      {swap && (
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute z-10 flex scale-95 items-center justify-center opacity-0 transition-[opacity,transform] duration-500 group-hover/art:scale-100 group-hover/art:opacity-100 ${
+            showFrame ? 'inset-10' : 'inset-4'
+          }`}
+        >
+          <figure className="relative aspect-[4/5] h-full max-w-full -rotate-2 border-[6px] border-white bg-white shadow-cut-lg">
+            <img
+              src={photoSrc}
+              alt=""
+              loading="lazy"
+              onError={() => setPhotoFailed(true)}
+              className="h-full w-full object-cover object-[58%_20%]"
+            />
+            <figcaption className="chip absolute -bottom-3 left-4 bg-ink px-3 py-1 shadow-cut-sm">
+              <span className="font-cond text-[11px] font-bold tracking-[0.25em] text-aqua-100">
+                IRL // THE REAL ONE
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      )}
+
+      {swap && (
+        <span className="chip pointer-events-none absolute left-8 top-8 z-20 bg-blood px-3 py-1 shadow-cut-sm transition-opacity duration-300 group-hover/art:opacity-0">
+          <span className="font-cond text-[10px] font-bold tracking-[0.28em] text-white">
+            HOVER // IRL MODE
+          </span>
+        </span>
       )}
 
       {chips.length > 0 && (
