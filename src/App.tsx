@@ -94,7 +94,7 @@ export default function App() {
   }, [activeIndex, flash, go, screen])
 
   return (
-    <div className="relative flex h-screen max-h-screen w-full flex-col overflow-hidden bg-deep-600 font-sans">
+    <div className="relative flex h-dvh max-h-dvh w-full flex-col overflow-hidden bg-deep-600 font-sans">
       <TopBar />
 
       {/* `key` remounts the stage so every screen replays its entrance. */}

@@ -30,9 +30,12 @@ export default function ScreenHeader({ title, seed = 3, onBack, caption }: Scree
       <button
         type="button"
         onClick={onBack}
-        className="chip mb-2 bg-white px-3 py-1 shadow-[4px_4px_0_rgba(7,8,10,0.35)] transition-colors duration-200 hover:bg-aqua-200"
+        className="chip mb-2 bg-white px-4 py-2 shadow-[4px_4px_0_rgba(7,8,10,0.35)] transition-colors duration-200 hover:bg-aqua-200 md:px-3 md:py-1"
       >
-        <span className="font-cond text-[10px] font-bold tracking-[0.3em] text-ink">ESC · BACK</span>
+        <span className="font-cond text-[11px] font-bold tracking-[0.3em] text-ink md:text-[10px]">
+          <span className="md:hidden">← BACK</span>
+          <span className="hidden md:inline">ESC · BACK</span>
+        </span>
       </button>
 
       {caption && (

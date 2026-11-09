@@ -12,8 +12,9 @@ export default function FooterHud({ status }: FooterHudProps) {
   const [sfxOn, toggleSfx] = useSfxEnabled()
 
   return (
-    <footer className="z-30 flex items-center justify-between gap-3 border-t-2 border-ink bg-ink/85 px-3 py-1.5 backdrop-blur-sm md:px-8">
-      <div className="flex items-center gap-3 md:gap-7">
+    <footer className="z-30 flex items-center justify-end gap-3 md:justify-between border-t-2 border-ink bg-ink/85 px-3 py-1.5 backdrop-blur-sm md:px-8">
+      {/* Keyboard prompts mean nothing on a phone. */}
+      <div className="hidden items-center gap-3 md:flex md:gap-7">
         <Prompt keyName="↑↓" label="SELECT" />
         <Prompt keyName="ENTER" label="CONFIRM" />
         <Prompt keyName="ESC" label="BACK" />
@@ -32,7 +33,7 @@ export default function FooterHud({ status }: FooterHudProps) {
           onClick={toggleSfx}
           aria-pressed={sfxOn}
           aria-label={sfxOn ? 'Mute interface sounds' : 'Unmute interface sounds'}
-          className="flex h-6 w-6 items-center justify-center border border-white/40 text-white transition-colors duration-200 hover:border-aqua-200 hover:text-aqua-200"
+          className="flex h-8 w-8 items-center md:h-6 md:w-6 justify-center border border-white/40 text-white transition-colors duration-200 hover:border-aqua-200 hover:text-aqua-200"
         >
           <SpeakerIcon muted={!sfxOn} />
         </button>

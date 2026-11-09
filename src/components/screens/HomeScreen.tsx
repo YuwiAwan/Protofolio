@@ -22,16 +22,18 @@ export default function HomeScreen({ activeIndex, onHover, onSelect }: HomeScree
 
       <main className="relative z-10 grid min-h-0 flex-1 grid-cols-1 gap-4 overflow-hidden px-4 md:px-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]">
         {/* ---------------------------- LEFT ---------------------------- */}
-        <div className="scrollbar-hide flex min-h-0 flex-col justify-center overflow-y-auto py-4">
+        {/* Mobile: starts at the top (a centred column that overflows clips its top and
+            can't be scrolled back to) and the menu moves up under the name via `order-*`. */}
+        <div className="scrollbar-hide flex min-h-0 flex-col overflow-y-auto py-4 lg:justify-center">
           <p
-            className={`mb-3 font-cond text-[11px] font-bold tracking-[0.55em] text-aqua-50 md:text-sm ${
+            className={`order-1 mb-3 font-cond text-[11px] font-bold tracking-[0.55em] text-aqua-50 md:text-sm ${
               mounted ? 'animate-fade-up' : 'opacity-0'
             }`}
           >
             {profile.eyebrow}
           </p>
 
-          <h1 className="font-display leading-[0.82]">
+          <h1 className="order-2 font-display leading-[0.82]">
             <span className="sr-only">{profile.fullName}</span>
             <span aria-hidden="true">
               <RansomText
@@ -51,7 +53,7 @@ export default function HomeScreen({ activeIndex, onHover, onSelect }: HomeScree
           </h1>
 
           <div
-            className={`mt-4 flex items-center gap-3 ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
+            className={`order-3 mt-4 flex items-center gap-3 ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.7s' }}
           >
             <span className="h-1.5 w-16 shrink-0 bg-blood" />
@@ -62,7 +64,7 @@ export default function HomeScreen({ activeIndex, onHover, onSelect }: HomeScree
 
           {/* Tilted intro slab */}
           <div
-            className={`tilt-card mt-5 max-w-[36rem] border-l-4 border-blood bg-ink px-5 py-4 md:px-6 md:py-5 ${
+            className={`tilt-card order-5 mt-5 max-w-[36rem] lg:order-4 border-l-4 border-blood bg-ink px-5 py-4 md:px-6 md:py-5 ${
               mounted ? 'animate-slide-in' : 'opacity-0'
             }`}
             style={{ animationDelay: '0.55s' }}
@@ -82,7 +84,7 @@ export default function HomeScreen({ activeIndex, onHover, onSelect }: HomeScree
 
           {/* Quick stat strip */}
           <dl
-            className={`mt-5 flex flex-wrap gap-x-6 gap-y-2 ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
+            className={`order-6 mt-5 flex flex-wrap gap-x-6 gap-y-2 lg:order-5 ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.78s' }}
           >
             {stats.map((stat) => (
@@ -98,7 +100,7 @@ export default function HomeScreen({ activeIndex, onHover, onSelect }: HomeScree
           </dl>
 
           {/* Main menu */}
-          <nav className="mt-6 flex flex-col gap-1" aria-label="Main">
+          <nav className="order-4 mt-6 flex flex-col gap-1 lg:order-6" aria-label="Main">
             {navItems.map((item, i) => {
               const isActive = i === activeIndex
               return (
