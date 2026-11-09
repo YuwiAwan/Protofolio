@@ -43,7 +43,7 @@ export default function AboutScreen({ onBack }: AboutScreenProps) {
               <SectionLabel className="mb-4">EDUCATION</SectionLabel>
               <div className="clip-notch-sm animate-pop-in bg-white px-5 py-4 shadow-cut">
                 <p className="font-heavy text-base uppercase leading-tight tracking-[0.01em] text-ink">
-                  <span className="text-aqua-400">B.CS</span> COMPUTER SCIENCE
+                  <span className="text-aqua-400">S.KOM</span> INFORMATICS
                 </p>
                 <p className="mt-1 font-cond text-[12px] font-bold tracking-[0.16em] text-ink/70">
                   {profile.university.toUpperCase()}

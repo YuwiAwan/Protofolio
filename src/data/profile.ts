@@ -36,7 +36,7 @@ export const profile = {
   role: 'Frontend Web Developer & Data Analyst',
 
   /** ✏️ EDIT — small line under your name on Home. Keep it SHORT + UPPERCASE. */
-  tagline: 'FRONTEND DEV / DATA ANALYST / CS GRAD',
+  tagline: 'FRONTEND DEV / DATA ANALYST / S.KOM',
 
   /** ✏️ EDIT — tiny line above your name on Home. */
   eyebrow: 'TAKE A LOOK AT MY WORK',
@@ -45,21 +45,21 @@ export const profile = {
   location: 'YOGYAKARTA · IND',
 
   /** ✏️ EDIT — white chip in the top-right corner. */
-  discipline: 'YOGYAKARTA · COMPUTER SCIENCE',
+  discipline: 'YOGYAKARTA · INFORMATICS',
 
   /** ✏️ EDIT — your school. Shown on the About screen. */
   university: 'Universitas Amikom Yogyakarta',
 
   /** ✏️ EDIT — short intro, black box on Home. Keep it to ~3 lines. */
   intro:
-    'Computer Science graduate from Universitas Amikom Yogyakarta. I specialize in building highly interactive web user interfaces and have a strong interest in machine learning and data analysis.',
+    'Informatics graduate (S.Kom) from Universitas Amikom Yogyakarta. I specialize in building highly interactive web user interfaces and have a strong interest in machine learning and data analysis.',
 
   /**
    * ✏️ EDIT — the long version, About screen only.
    * One black slab per paragraph. Add or delete paragraphs freely.
    */
   about: [
-    'Computer Science graduate from Universitas Amikom Yogyakarta. I specialize in building highly interactive web user interfaces — the kind where motion, state and layout all have to agree with each other — and I care about the details that make an interface feel deliberate rather than assembled.',
+    'Informatics graduate (S.Kom) from Universitas Amikom Yogyakarta. I specialize in building highly interactive web user interfaces — the kind where motion, state and layout all have to agree with each other — and I care about the details that make an interface feel deliberate rather than assembled.',
     'On the data side I work with Python for analysis and classical machine learning: cleaning and labelling text, engineering features, then training and evaluating models. My sentiment-analysis work compared Logistic Regression against K-Nearest Neighbors on real social-media text scraped from platform X.',
     'The two halves feed each other. Analysis tells me what a product should say; frontend work is how it gets said. I like projects that need both.',
   ],
@@ -73,7 +73,7 @@ export const profile = {
 
 export const stats = [
   { label: 'DISCIPLINE', value: 'FRONTEND + DATA' },
-  { label: 'DEGREE', value: 'B.CS — AMIKOM' },
+  { label: 'DEGREE', value: 'S.KOM — AMIKOM' },
   { label: 'STACK', value: 'REACT / TS / PYTHON' },
 ] as const
 
